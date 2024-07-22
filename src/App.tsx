@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { MdDeleteOutline } from "react-icons/md";
 import ErrorMessage from "./components/ErrorMessage";
 import UploaderInputBox from "./components/UploaderInputBox";
 import UploaderDetail from "./components/UploaderDetail";
-import UploadIcon from "../src/components/uploadIcon";
 import axios from "axios";
 interface Image {
   id: number;
@@ -18,40 +16,6 @@ interface Image {
 function App() {
   const [images, setImages] = useState<Image[]>([]);
   const [errorMessage, setErrorMessage] = useState<string>("");
-
-  const handledrag = (e: React.DragEvent<HTMLLabelElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-  };
-  // const handleDrop = (e: React.DragEvent<HTMLLabelElement>) => {
-  //   e.preventDefault();
-  //   e.stopPropagation();
-  //   const imageF = e.dataTransfer.files;
-  //   if (imageF) {
-  //     Array.from(imageF).forEach((item, index) => {
-  //       const fileUrl = URL.createObjectURL(item);
-
-  //       if (item.size > 2 * 1024 * 1024) {
-  //         setErrorMessage("The files must be less than 2MB");
-  //         return;
-  //       } else {
-  //         const newImage = {
-  //           id: Date.now() + index,
-  //           name: item.name,
-  //           url: fileUrl,
-  //           size: item.size,
-  //         };
-  //         const exist = images.some((img) => img.name === item.name);
-  //         if (exist) {
-  //           setErrorMessage("Image already exist");
-  //         } else {
-  //           setImages((prevImages) => [...prevImages, newImage]);
-  //           setErrorMessage("");
-  //         }
-  //       }
-  //     });
-  //   }
-  // };
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const imageFile = e.target?.files;
